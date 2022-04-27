@@ -1,4 +1,3 @@
-lint:
+pr-ready:
 	stylua .
-
-pr-ready: lint
+	prettier --write .
