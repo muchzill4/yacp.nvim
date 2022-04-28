@@ -64,3 +64,8 @@ vim.api.nvim_set_keymap(
 ## Notes
 
 - Adding a palette entry with duplicate name, will overwrite the command, but retain the order.
+
+## Similar plugins
+
+- [telescope-command-palette.nvim](https://github.com/LinArcX/telescope-command-palette.nvim)
+- [command_center.nvim](https://github.com/FeiyouG/command_center.nvim)
