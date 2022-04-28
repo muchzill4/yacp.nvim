@@ -24,6 +24,7 @@ require('telescope').setup {
          { name = "help", cmd = "Telescope help_tags" },
          ...
       }
+    }
   }
 }
 ```
