@@ -2,8 +2,6 @@ local M = {}
 
 M.palette = {}
 
-M._telescope_setup_run = false
-
 local function shallowcopy(orig)
   local copy = {}
   for orig_key, orig_value in pairs(orig) do
