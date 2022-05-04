@@ -14,7 +14,7 @@ local last_selection = nil
 
 function M.setup(config)
   if config.palette then
-    palette.telescope_init(config.palette)
+    palette._telescope_init(config.palette)
   end
 end
 
