@@ -15,7 +15,7 @@ require("telescope").load_extension "yacp"
 ### Create common command palette
 
 ```lua
-require('telescope').setup {
+require("telescope").setup {
   extensions = {
     yacp = {
       palette = {
@@ -35,7 +35,7 @@ require('telescope').setup {
 Can be done using `exrc` or [nvim-projectconfig](https://github.com/windwp/nvim-projectconfig).
 
 ```lua
-local palette = require('telescope').extensions.yacp.palette
+local palette = require("telescope").extensions.yacp.palette
 
 palette.extend({
   { name = "build", cmd = "make build" },
