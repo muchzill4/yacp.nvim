@@ -35,7 +35,7 @@ require("telescope").setup {
 Can be done using `exrc` or [nvim-projectconfig](https://github.com/windwp/nvim-projectconfig).
 
 ```lua
-local palette = require("telescope").extensions.yacp.palette
+local palette = require "yacp.palette"
 
 palette.extend({
   { name = "build", cmd = "make build" },

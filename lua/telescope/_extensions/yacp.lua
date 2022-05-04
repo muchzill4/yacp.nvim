@@ -5,9 +5,8 @@ if not has_telescope then
 end
 
 local main = require "telescope._extensions.yacp.main"
-local palette = require "telescope._extensions.yacp.palette"
 
 return telescope.register_extension {
   setup = main.setup,
-  exports = { yacp = main.yacp, replay = main.replay, palette = palette },
+  exports = { yacp = main.yacp, replay = main.replay },
 }

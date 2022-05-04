@@ -7,7 +7,7 @@ local finders = require "telescope.finders"
 local pickers = require "telescope.pickers"
 local utils = require "telescope.utils"
 
-local palette = require "telescope._extensions.yacp.palette"
+local palette = require "yacp.palette"
 local exec = require "telescope._extensions.yacp.exec"
 
 local last_selection = nil
