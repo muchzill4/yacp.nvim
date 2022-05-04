@@ -8,7 +8,7 @@ local pickers = require "telescope.pickers"
 local utils = require "telescope.utils"
 
 local palette = require "telescope._extensions.yacp.palette"
-local run_cmd = require "telescope._extensions.yacp.run_cmd"
+local exec = require "telescope._extensions.yacp.exec"
 
 local last_selection = nil
 
@@ -54,7 +54,7 @@ function M.yacp(opts)
         end
         actions.close(prompt_bufnr)
         last_selection = selection.value
-        run_cmd(selection.value.cmd)
+        exec(selection.value.cmd)
       end)
       return true
     end,
@@ -63,7 +63,7 @@ end
 
 function M.replay()
   if last_selection ~= nil then
-    run_cmd(last_selection.cmd)
+    exec(last_selection.cmd)
   else
     utils.notify("extensions.yacp", {
       msg = "No last command palette command to replay",

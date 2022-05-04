@@ -22,6 +22,7 @@ require('telescope').setup {
          { name = "echo in term", cmd = "term echo SUCCESS" },
          { name = "echo", cmd = "!echo SUCCESS" },
          { name = "help", cmd = "Telescope help_tags" },
+         { name = "hi", cmd = function() print("HI!") end },
          ...
       }
     }
