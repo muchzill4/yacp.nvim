@@ -58,7 +58,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
   "n",
   "<Leader>P",
-  "<Cmd>lua require('telescope').extensions.yacp.replay()<CR>",
+  "<Cmd>Telescope yacp replay<CR>",
   {noremap = true, silent = true}
 )
 ```
