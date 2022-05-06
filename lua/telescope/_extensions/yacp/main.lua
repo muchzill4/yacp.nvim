@@ -20,8 +20,9 @@ end
 
 function M.yacp(opts)
   opts = opts or {}
+  local p = palette.list()
 
-  if vim.tbl_isempty(palette.palette) then
+  if vim.tbl_isempty(p) then
     utils.notify("extensions.yacp", {
       msg = "Empty command palette",
       level = "INFO",
@@ -31,7 +32,7 @@ function M.yacp(opts)
 
   local function finder()
     return finders.new_table {
-      results = palette.palette,
+      results = p,
       entry_maker = function(entry)
         return {
           value = entry,
