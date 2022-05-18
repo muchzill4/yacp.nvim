@@ -14,7 +14,7 @@ local last_selection = nil
 
 function M.setup(config)
   if config.palette then
-    palette._telescope_init(config.palette)
+    palette.prepend(config.palette)
   end
 end
 
@@ -23,10 +23,10 @@ function M.yacp(opts)
   local p = palette.list()
 
   if vim.tbl_isempty(p) then
-    utils.notify("extensions.yacp", {
-      msg = "Empty command palette",
-      level = "INFO",
-    })
+    utils.notify(
+      "extensions.yacp",
+      { msg = "Empty command palette", level = "INFO" }
+    )
     return
   end
 

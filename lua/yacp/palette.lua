@@ -30,9 +30,7 @@ local function insert(new_entry)
   end
 end
 
--- It's possible telescope will run plugin setup after .extend() was called,
--- this really is a prepend followed by re-inserting existing entries.
-function M._telescope_init(new_palette)
+function M.prepend(new_palette)
   local old = shallowcopy(palette)
   palette = {}
   M.extend(new_palette)
