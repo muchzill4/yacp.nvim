@@ -12,7 +12,7 @@ Useful for repetitive, but map unworthy actions you frequently perform. Palette 
 require("telescope").load_extension "yacp"
 ```
 
-### Create common command palette
+### Populate global command palette
 
 ```lua
 require("telescope").setup {
@@ -30,9 +30,19 @@ require("telescope").setup {
 }
 ```
 
-### Extend per project
+## Usage
 
-Can be done using `exrc` or [nvim-projectconfig](https://github.com/windwp/nvim-projectconfig).
+```vim
+" show command palette
+:Telescope yacp
+
+" re-run last command executed via command palette
+:Telescope yacp replay
+```
+
+### Extending command palette
+
+This can be useful in a project specific setup. Instead of polluting your global command palette, you can use `exrc` or [nvim-projectconfig](https://github.com/windwp/nvim-projectconfig) to run `palette.extend()` when running vim in a specific directory.
 
 ```lua
 local palette = require "yacp.palette"
@@ -41,26 +51,6 @@ palette.extend({
   { name = "build", cmd = "make build" },
   ...
 })
-```
-
-### Map keys
-
-```lua
--- bring up command palette
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>p",
-  "<Cmd>Telescope yacp<CR>",
-  {noremap = true, silent = true}
-)
-
--- replay last command
-vim.api.nvim_set_keymap(
-  "n",
-  "<Leader>P",
-  "<Cmd>Telescope yacp replay<CR>",
-  {noremap = true, silent = true}
-)
 ```
 
 ## Notes
