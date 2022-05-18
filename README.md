@@ -21,11 +21,11 @@ require("telescope").setup {
   extensions = {
     yacp = {
       palette = {
-         { name = "echo in term", cmd = "term echo SUCCESS" },
-         { name = "echo", cmd = "!echo SUCCESS" },
-         { name = "help", cmd = "Telescope help_tags" },
-         { name = "hi", cmd = function() print("HI!") end },
-         ...
+        { name = "echo in term", cmd = "term echo SUCCESS" },
+        { name = "echo", cmd = "!echo SUCCESS" },
+        { name = "help", cmd = "Telescope help_tags" },
+        { name = "hi", cmd = function() print("HI!") end },
+        ...
       }
     }
   }
@@ -65,10 +65,16 @@ Focus is an optional feature, which allows you to set a temporary palette entry 
 To use focussing, you need to add its entry to your command palette:
 
 ```lua
-palette.extend({
-  require("yacp.focus").palette_entry,
-  ...
-})
+require("telescope").setup {
+  extensions = {
+    yacp = {
+      palette = {
+        require("yacp.focus").palette_entry,
+        ...
+      }
+    }
+  }
+}
 ```
 
 _Workflow hint:_
