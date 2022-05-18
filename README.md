@@ -4,6 +4,8 @@ An extension for [telescope](https://github.com/nvim-telescope/telescope.nvim) t
 
 Useful for repetitive, but map unworthy actions you frequently perform. Palette can be easily extended in a per-project setup.
 
+![telescope-yacp](../assets/telescope-yacp.png)
+
 ## Setup
 
 ### Load extension
