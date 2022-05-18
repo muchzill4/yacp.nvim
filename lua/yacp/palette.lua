@@ -30,19 +30,19 @@ local function insert(new_entry)
   end
 end
 
-function M.prepend(new_palette)
-  local old = shallowcopy(palette)
+function M.prepend(palette_entries)
+  local old_palette = shallowcopy(palette)
   palette = {}
-  M.extend(new_palette)
-  M.extend(old)
+  M.extend(palette_entries)
+  M.extend(old_palette)
 end
 
 function M.list()
   return palette
 end
 
-function M.extend(more_palette)
-  for _, entry in ipairs(more_palette) do
+function M.extend(palette_entries)
+  for _, entry in ipairs(palette_entries) do
     insert(entry)
   end
 end
