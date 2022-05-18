@@ -7,7 +7,7 @@ function M.set(new_cmd)
 end
 
 function M.input()
-  M.set(vim.fn.input("Set focus cmd: "))
+  M.set(vim.fn.input "Set focus cmd: ")
 end
 
 M.palette_entry = {
