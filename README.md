@@ -53,6 +53,26 @@ palette.extend({
 })
 ```
 
+### Focus
+
+Focus is an optional feature, which allows you to set a temporary palette entry named "focus run".
+"Focus run" becomes visible, once focus command is set. You can set it by using either "focus set" palette entry or `:lua require("yacp.focus").set()`.
+
+To use focussing, you need to add its entry to your command palette:
+
+```lua
+palette.extend({
+  require("yacp.focus").palette_entry,
+  ...
+})
+```
+
+_Workflow hint:_
+
+1. Run a command you'd like to focus on using vim command line mode
+2. Execute "focus set" entry from command palette
+3. Paste the command you've run in step 1. using `":` vim register: `<C-r>:`
+
 ## Notes
 
 - Adding a palette entry with duplicate name, will overwrite the command, but retain the order.

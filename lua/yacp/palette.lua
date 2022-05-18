@@ -38,7 +38,18 @@ function M.prepend(palette_entries)
 end
 
 function M.list()
-  return palette
+  local expanded = {}
+  for _, entry in ipairs(palette) do
+    if entry.expand ~= nil then
+      for _, sub_entry in ipairs(entry.expand()) do
+        sub_entry.name = entry.name .. " " .. sub_entry.name
+        table.insert(expanded, sub_entry)
+      end
+    else
+      table.insert(expanded, entry)
+    end
+  end
+  return expanded
 end
 
 function M.extend(palette_entries)
