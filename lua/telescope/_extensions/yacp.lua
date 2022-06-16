@@ -4,9 +4,10 @@ if not has_telescope then
   error "This plugin requires nvim-telescope/telescope.nvim"
 end
 
-local main = require "telescope._extensions.yacp.main"
+local provider = require "yacp.providers.telescope"
+local exec = require "yacp.exec"
 
 return telescope.register_extension {
-  setup = main.setup,
-  exports = { yacp = main.yacp, replay = main.replay },
+  setup = provider.setup,
+  exports = { yacp = provider.yacp, replay = exec.replay },
 }

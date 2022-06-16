@@ -1,5 +1,3 @@
-local M = {}
-
 local palette = {}
 
 local function shallowcopy(orig)
@@ -29,6 +27,8 @@ local function insert(new_entry)
     table.insert(palette, new_entry)
   end
 end
+
+local M = {}
 
 function M.prepend(palette_entries)
   local old_palette = shallowcopy(palette)

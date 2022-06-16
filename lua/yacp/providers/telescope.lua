@@ -5,12 +5,10 @@ local actions = require "telescope.actions"
 local conf = require("telescope.config").values
 local finders = require "telescope.finders"
 local pickers = require "telescope.pickers"
-local utils = require "telescope.utils"
 
-local palette = require "yacp.palette"
 local exec = require "yacp.exec"
-
-local last_selection = nil
+local notify = require "yacp.notify"
+local palette = require "yacp.palette"
 
 function M.setup(config)
   if config.palette then
@@ -23,10 +21,7 @@ function M.yacp(opts)
   local p = palette.list()
 
   if vim.tbl_isempty(p) then
-    utils.notify(
-      "extensions.yacp",
-      { msg = "Empty command palette", level = "INFO" }
-    )
+    notify.of_error "Empty command palette"
     return
   end
 
@@ -54,23 +49,11 @@ function M.yacp(opts)
           return
         end
         actions.close(prompt_bufnr)
-        last_selection = selection.value
-        exec(selection.value.cmd)
+        exec.exec(selection.value.cmd)
       end)
       return true
     end,
   }):find()
-end
-
-function M.replay()
-  if last_selection ~= nil then
-    exec(last_selection.cmd)
-  else
-    utils.notify("extensions.yacp", {
-      msg = "No last command palette command to replay",
-      level = "INFO",
-    })
-  end
 end
 
 return M
