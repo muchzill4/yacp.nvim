@@ -17,6 +17,7 @@ end
 local M = {}
 
 function M.exec(cmd)
+  last_cmd = cmd
   if type(cmd) == "function" then
     cmd()
   else
