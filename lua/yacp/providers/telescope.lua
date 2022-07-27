@@ -12,7 +12,7 @@ local palette = require "yacp.palette"
 
 function M.setup(config)
   if config.palette then
-    palette.prepend(config.palette)
+    palette.extend(config.palette)
   end
 end
 
@@ -38,22 +38,24 @@ function M.yacp(opts)
     }
   end
 
-  pickers.new(opts, {
-    prompt_title = "Command palette",
-    finder = finder(),
-    sorter = conf.generic_sorter(opts),
-    attach_mappings = function(prompt_bufnr, _)
-      actions.select_default:replace(function()
-        local selection = action_state.get_selected_entry()
-        if selection == nil then
-          return
-        end
-        actions.close(prompt_bufnr)
-        exec.exec(selection.value.cmd)
-      end)
-      return true
-    end,
-  }):find()
+  pickers
+    .new(opts, {
+      prompt_title = "Command palette",
+      finder = finder(),
+      sorter = conf.generic_sorter(opts),
+      attach_mappings = function(prompt_bufnr, _)
+        actions.select_default:replace(function()
+          local selection = action_state.get_selected_entry()
+          if selection == nil then
+            return
+          end
+          actions.close(prompt_bufnr)
+          exec.exec(selection.value.cmd)
+        end)
+        return true
+      end,
+    })
+    :find()
 end
 
 return M
