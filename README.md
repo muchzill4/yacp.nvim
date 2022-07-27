@@ -22,9 +22,15 @@ require("telescope").setup {
     yacp = {
       palette = {
         { name = "echo in term", cmd = "term echo SUCCESS" },
-        { name = "echo", cmd = "!echo SUCCESS" },
         { name = "help", cmd = "Telescope help_tags" },
         { name = "hi", cmd = function() print("HI!") end },
+        {
+          name = "do stuff only in go files",
+          cmd = "...",
+          show = function()
+            return vim.bo.filetype == "go"
+          end
+        },
         ...
       }
     }

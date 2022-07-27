@@ -30,16 +30,22 @@ local M = {}
 function M.list()
   local expanded = {}
   for _, entry in ipairs(palette) do
-    if entry.expand ~= nil then
-      local sub_entries = entry.expand()
-      sort_by_name(sub_entries)
-      for _, sub_entry in ipairs(sub_entries) do
-        sub_entry.name = entry.name .. " " .. sub_entry.name
-        table.insert(expanded, sub_entry)
+    (function()
+      if entry.show ~= nil and not entry.show() then
+        return
       end
-    else
-      table.insert(expanded, entry)
-    end
+      -- This is so bad, I could use condition instead of the `expand` mallarky
+      if entry.expand ~= nil then
+        local sub_entries = entry.expand()
+        sort_by_name(sub_entries)
+        for _, sub_entry in ipairs(sub_entries) do
+          sub_entry.name = entry.name .. " " .. sub_entry.name
+          table.insert(expanded, sub_entry)
+        end
+      else
+        table.insert(expanded, entry)
+      end
+    end)()
   end
   return expanded
 end
