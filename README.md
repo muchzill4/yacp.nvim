@@ -4,11 +4,6 @@ An extension for neovim that allows you to run arbitrary commands via a command 
 
 Useful for repetitive, but map unworthy actions you frequently perform.
 
-Requires either:
-
-- [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-- [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua)
-
 ![telescope-yacp](../assets/telescope-yacp.png)
 
 ## Setup
@@ -16,7 +11,13 @@ Requires either:
 ### Install
 
 ```lua
-use { "muchzill4/yacp.nvim" }
+use {
+  "muchzill4/yacp.nvim",
+  requires = {
+    "nvim-telescope/telescope.nvim",
+    -- or "ibhagwan/fzf-lua"
+  },
+}
 ```
 
 ### Configure
