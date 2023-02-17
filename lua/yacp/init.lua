@@ -45,7 +45,6 @@ M.setup = function(opts)
   end
 
   if opts.enable_focus then
-    print "here"
     palette.extend {
       require("yacp.focus").palette_entry,
     }
