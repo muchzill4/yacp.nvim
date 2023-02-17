@@ -1,56 +1,59 @@
-# 🎨 telescope-yacp.nvim
+# 🎨 yacp.nvim
 
-An extension for [telescope](https://github.com/nvim-telescope/telescope.nvim) that allows you to run arbitrary commands via a command palette.
+An extension for neovim that allows you to run arbitrary commands via a command palette.
 
-Useful for repetitive, but map unworthy actions you frequently perform. Palette can be easily extended in a per-project setup.
+Useful for repetitive, but map unworthy actions you frequently perform.
+
+Requires either:
+
+- [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua)
 
 ![telescope-yacp](../assets/telescope-yacp.png)
 
 ## Setup
 
-### Load extension
+### Install
 
 ```lua
-require("telescope").load_extension "yacp"
+use { "muchzill4/yacp.nvim" }
 ```
 
-### Populate global command palette
+### Configure
 
 ```lua
-require("telescope").setup {
-  extensions = {
-    yacp = {
-      palette = {
-        { name = "echo in term", cmd = "term echo SUCCESS" },
-        { name = "help", cmd = "Telescope help_tags" },
-        { name = "hi", cmd = function() print("HI!") end },
-        {
-          name = "do stuff only in go files",
-          cmd = "...",
-          show = function()
-            return vim.bo.filetype == "go"
-          end
-        },
-        ...
-      }
-    }
-  }
+require("yacp").setup {
+  provider = "telescope", -- or "fzf"
+  palette = {
+    { name = "echo in term", cmd = "term echo SUCCESS" },
+    { name = "help", cmd = "Telescope help_tags" },
+    { name = "hi", cmd = function() print("HI!") end },
+    {
+      name = "do stuff only in go files",
+      cmd = "...",
+      show = function()
+        return vim.bo.filetype == "go"
+      end
+    },
+  },
 }
 ```
 
 ## Usage
 
 ```vim
-" show command palette
-:Telescope yacp
+:lua require("yacp").yacp()
+```
 
-" re-run last command executed via command palette
-:Telescope yacp replay
+Re-run last command executed via command palette:
+
+```
+:lua require("yacp").replay()
 ```
 
 ### Extending command palette
 
-This can be useful in a project specific setup. Instead of polluting your global command palette, you can use `exrc` or [nvim-projectconfig](https://github.com/windwp/nvim-projectconfig) to run `palette.extend()` when running vim in a specific directory.
+This can be useful in a project specific setup. Instead of polluting your global command palette via `setup()`, you can use `exrc` or [windwp/nvim-projectconfig](https://github.com/windwp/nvim-projectconfig) to run `palette.extend()` when running vim in a specific directory.
 
 ```lua
 local palette = require "yacp.palette"
@@ -68,18 +71,12 @@ Focus is an optional feature, which allows you to set a temporary palette entry 
 
 ![telescope-yacp-focus](../assets/telescope-yacp-focus.gif)
 
-To use focussing, you need to add its entry to your command palette:
+To use focus, you need to first enable it in your setup:
 
 ```lua
-require("telescope").setup {
-  extensions = {
-    yacp = {
-      palette = {
-        require("yacp.focus").palette_entry,
-        ...
-      }
-    }
-  }
+require("yacp").setup {
+  ...
+  enable_focus = true,
 }
 ```
 
@@ -88,10 +85,6 @@ _Workflow hint:_
 1. Run a command you'd like to focus on using vim command line mode
 2. Execute "focus set" entry from command palette
 3. Paste the command you've run in step 1. using `":` vim register: `<C-r>:`
-
-## Notes
-
-- Adding a palette entry with duplicate name, will overwrite the command, but retain the order.
 
 ## Similar plugins
 
