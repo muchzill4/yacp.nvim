@@ -68,9 +68,11 @@ palette.extend({
 ### Focus
 
 Focus is an optional feature, which allows you to set a temporary palette entry named "focus run".
-"Focus run" becomes visible, once focus command is set. You can set it by using either "focus set" palette entry or `:lua require("yacp.focus").set()`.
 
-![telescope-yacp-focus](../assets/telescope-yacp-focus.gif)
+- "Focus run" becomes visible, once focus command is set
+- You can set the focus command by using either:
+  - "focus set" palette entry
+  - `:lua require("yacp.focus").set()`
 
 To use focus, you need to first enable it in your setup:
 
