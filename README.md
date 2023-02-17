@@ -48,7 +48,7 @@ require("yacp").setup {
 
 Re-run last command executed via command palette:
 
-```
+```vim
 :lua require("yacp").replay()
 ```
 
