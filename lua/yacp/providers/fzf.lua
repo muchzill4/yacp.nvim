@@ -1,5 +1,9 @@
 local M = {}
 
+local notify = require "yacp.notify"
+local exec = require "yacp.exec"
+local palette = require "yacp.palette"
+
 local function make_fzf_entries(p)
   local entries = {}
   for _, entry in ipairs(p) do
@@ -16,10 +20,6 @@ local function find_command(p, name)
   end
   return nil
 end
-
-local notify = require "yacp.notify"
-local exec = require "yacp.exec"
-local palette = require "yacp.palette"
 
 function M.yacp(opts)
   local p = palette.list()
