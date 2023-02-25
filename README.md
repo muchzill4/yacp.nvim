@@ -4,7 +4,7 @@ An extension for neovim that allows you to run arbitrary commands via a command 
 
 Useful for repetitive, but map unworthy actions you frequently perform.
 
-![telescope-yacp](../assets/telescope-yacp.png)
+![yacp](../assets/yacp.png)
 
 ## Setup
 
