@@ -3,8 +3,8 @@ Output focus-demo.mp4
 Set Padding 0
 Set FontFamily "Rec Mono Duotone"
 Set FontSize 12
-Set Width 800
-Set Height 600
+Set Width 640
+Set Height 480
 
 Hide
 Type "nvim"
