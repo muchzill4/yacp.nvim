@@ -16,7 +16,7 @@ end
 
 M.yacp = function()
   if provider ~= nil then
-    provider.yacp()
+    require(providers[provider]).yacp()
   end
 end
 
@@ -38,7 +38,7 @@ M.setup = function(opts)
     )
     return
   end
-  provider = require(providers[opts.provider])
+  provider = opts.provider
 
   if opts.palette ~= nil then
     palette.extend(opts.palette)
