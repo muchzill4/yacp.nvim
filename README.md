@@ -83,7 +83,9 @@ require("yacp").setup {
 }
 ```
 
-_Workflow hint:_
+https://user-images.githubusercontent.com/454838/221367839-e9e403c3-b929-44fc-8273-5630f573193b.mp4
+
+#### Workflow hint
 
 1. Run a command you'd like to focus on using vim command line mode
 2. Execute "focus set" entry from command palette
