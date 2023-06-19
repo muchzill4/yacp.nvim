@@ -14,9 +14,9 @@ local function is_valid_provider(name)
   return providers[name] ~= nil
 end
 
-M.yacp = function()
+M.yacp = function(opts)
   if provider ~= nil then
-    require(providers[provider]).yacp()
+    require(providers[provider]).yacp(opts)
   end
 end
 

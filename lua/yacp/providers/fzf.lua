@@ -29,18 +29,23 @@ function M.yacp(opts)
   end
   local entries = make_fzf_entries(p)
 
-  opts = opts or {}
-  opts.actions = {
-    ["default"] = function(selected)
-      if selected then
-        local cmd = find_command(p, selected[1])
-        if cmd ~= nil then
-          exec.exec(cmd)
+  local defaults = {
+    winopts = {
+      height = 0.65,
+      width = 0.50,
+    },
+    actions = {
+      ["default"] = function(selected)
+        if selected then
+          local cmd = find_command(p, selected[1])
+          if cmd ~= nil then
+            exec.exec(cmd)
+          end
         end
-      end
-    end,
+      end,
+    },
   }
-
+  opts = vim.tbl_deep_extend("keep", opts or {}, defaults)
   require("fzf-lua").fzf_exec(entries, opts)
 end
 
