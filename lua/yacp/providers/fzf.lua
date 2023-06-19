@@ -34,6 +34,9 @@ function M.yacp(opts)
       height = 0.65,
       width = 0.50,
     },
+    fzf_opts = {
+      ["--no-multi"] = "",
+    },
     actions = {
       ["default"] = function(selected)
         if selected then
