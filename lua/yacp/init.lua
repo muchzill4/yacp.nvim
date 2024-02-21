@@ -8,6 +8,7 @@ local provider = nil
 local providers = {
   fzf = "yacp.providers.fzf",
   telescope = "yacp.providers.telescope",
+  native = "yacp.providers.native",
 }
 
 local function is_valid_provider(name)
@@ -28,16 +29,18 @@ M.setup = function(opts)
   opts = opts or {}
 
   if opts.provider == nil then
-    notify.of_error "Missing provider setting"
-    return
-  elseif not is_valid_provider(opts.provider) then
+    opts.provider = "native"
+  end
+
+  if not is_valid_provider(opts.provider) then
     notify.of_error(
       "Invalid provider: "
         .. opts.provider
-        .. ". Must be one of: 'fzf', 'telescope'."
+        .. ". Must be one of: 'native', 'fzf', 'telescope'."
     )
     return
   end
+
   provider = opts.provider
 
   if opts.palette ~= nil then
