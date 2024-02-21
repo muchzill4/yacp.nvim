@@ -13,10 +13,11 @@ Useful for repetitive, but map unworthy actions you frequently perform.
 ```lua
 use {
   "muchzill4/yacp.nvim",
-  requires = {
-    "nvim-telescope/telescope.nvim",
-    -- or "ibhagwan/fzf-lua"
-  },
+  -- when using provider other than "native":
+  -- requires = {
+  --   "nvim-telescope/telescope.nvim", -- provider = "telescope"
+  --   "ibhagwan/fzf-lua" -- provider = "fzf"
+  -- },
 }
 ```
 
@@ -24,7 +25,7 @@ use {
 
 ```lua
 require("yacp").setup {
-  provider = "telescope", -- or "fzf"
+  provider = "native", -- native (default, uses vim.ui.select) | telescope | fzf
   palette = {
     { name = "echo in term", cmd = "term echo SUCCESS" },
     { name = "help", cmd = "Telescope help_tags" },
