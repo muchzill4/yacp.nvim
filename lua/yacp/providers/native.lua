@@ -30,7 +30,7 @@ function M.yacp(opts)
   local entries = make_select_entries(p)
 
   local defaults = {
-    prompt = "",
+    prompt = "Select command:",
   }
 
   opts = vim.tbl_deep_extend("keep", opts or {}, defaults)
