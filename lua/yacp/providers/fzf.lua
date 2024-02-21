@@ -52,8 +52,4 @@ function M.yacp(opts)
   require("fzf-lua").fzf_exec(entries, opts)
 end
 
-function M.replay()
-  exec.replay()
-end
-
 return M
