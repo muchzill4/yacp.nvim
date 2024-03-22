@@ -2,7 +2,7 @@
 
 An extension for neovim that allows you to run arbitrary commands via a command palette.
 
-Useful for repetitive, but map unworthy actions you frequently perform.
+Useful for repetitive but map unworthy actions you frequently perform.
 
 ![yacp](../assets/yacp.png)
 
